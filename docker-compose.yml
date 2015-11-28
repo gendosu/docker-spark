@@ -1,0 +1,27 @@
+main:
+  build: .
+
+  volumes:
+    - ".:/products"
+
+#  external_links:
+#   links:
+#     - "mysql:mysql"
+# 
+#   ports:
+#     - "2207:22"
+#     - "3007:3000"
+# 
+#   expose:
+#     - "22"
+# 
+#   command: "/usr/bin/supervisord"
+# 
+# mysql:
+#   image: mysql:5.5
+# 
+#   environment:
+#     - MYSQL_ROOT_PASSWORD=root
+# 
+#   expose:
+#     - "3306"

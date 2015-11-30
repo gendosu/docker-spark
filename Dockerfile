@@ -13,10 +13,10 @@ RUN apt-get update; apt-get -y --force-yes install \
   openjdk-7-jdk
 
 ADD spark-1.5.2.tgz /usr/local
-RUN echo "export PATH=$PATH:/usr/local/spark-1.5.2/bin" > ~/.bashrc
+RUN echo "export PATH=$PATH:/usr/local/spark-1.5.2/bin" >> ~/.bashrc
 
 ADD sbt-0.13.9.tgz /usr/local
-RUN echo "export PATH=$PATH:/usr/local/sbt/bin" > ~/.bashrc
+RUN echo "export PATH=$PATH:/usr/local/sbt/bin" >> ~/.bashrc
 
 # spark build
 WORKDIR /usr/local/spark-1.5.2

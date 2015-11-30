@@ -12,11 +12,14 @@ RUN apt-get update; apt-get -y --force-yes install \
   curl \
   openjdk-7-jdk
 
+ENV DEBIAN_FRONTEND noninteractive
+ENV SPARK_VERSION 1.5.2
+ENV SPARK_HOME /usr/local/spark-1.5.2
+ENV PATH $SPARK_HOME/bin:$PATH
+
 ADD spark-1.5.2.tgz /usr/local
-RUN echo "export PATH=$PATH:/usr/local/spark-1.5.2/bin" >> ~/.bashrc
 
 ADD sbt-0.13.9.tgz /usr/local
-RUN echo "export PATH=$PATH:/usr/local/sbt/bin" >> ~/.bashrc
 
 # spark build
 WORKDIR /usr/local/spark-1.5.2

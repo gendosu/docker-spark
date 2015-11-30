@@ -24,3 +24,4 @@ WORKDIR /usr/local/spark-1.5.2
 # RUN build/mvn -Pyarn -Phadoop-2.4 -Dhadoop.version=2.4.0 -DskipTests clean package
 # jdbc and hive saport
 RUN build/mvn -Pyarn -Phadoop-2.4 -Dhadoop.version=2.4.0 -Phive -Phive-thriftserver -DskipTests clean package
+

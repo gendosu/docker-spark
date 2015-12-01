@@ -27,7 +27,7 @@ RUN tar xvfz v1.5.2.tar.gz
 # spark build
 WORKDIR /usr/local/spark-1.5.2
 # normal
-RUN build/mvn -Pyarn -Phadoop-2.4 -Dhadoop.version=2.4.0 -DskipTests clean package
+RUN build/mvn -X -Pyarn -Phadoop-2.4 -Dhadoop.version=2.4.0 -DskipTests clean package
 # jdbc and hive saport
 # RUN build/mvn -Pyarn -Phadoop-2.4 -Dhadoop.version=2.4.0 -Phive -Phive-thriftserver -DskipTests clean package
 

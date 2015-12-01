@@ -18,10 +18,10 @@ ENV SPARK_HOME /usr/local/spark-1.5.2
 ENV PATH $SPARK_HOME/bin:$PATH
 
 WORKDIR /usr/local
-ADD https://github.com/apache/spark/archive/v1.5.2.tar.gz /usr/local
+RUN wget https://github.com/apache/spark/archive/v1.5.2.tar.gz
 RUN tar xvfz v1.5.2.tar.gz
 
-ADD https://dl.bintray.com/sbt/native-packages/sbt/0.13.9/sbt-0.13.9.tgz /usr/local
+ADD wget https://dl.bintray.com/sbt/native-packages/sbt/0.13.9/sbt-0.13.9.tgz
 RUN tar xvfz sbt-0.13.9.tgz
 
 # spark build

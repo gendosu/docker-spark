@@ -17,14 +17,19 @@ ENV SPARK_VERSION 1.5.2
 ENV SPARK_HOME /usr/local/spark-1.5.2
 ENV PATH $SPARK_HOME/bin:$PATH
 
-ADD spark-1.5.2.tgz /usr/local
+WORKDIR /usr/local
+ADD https://github.com/apache/spark/archive/v${SPARK_VERSION}.tar.gz /usr/local
+RUN tar xvfz v${SPARK_VERSION}.tar.gz
 
-ADD sbt-0.13.9.tgz /usr/local
+ADD https://dl.bintray.com/sbt/native-packages/sbt/0.13.9/sbt-0.13.9.tgz /usr/local
+RUN tar xvfz sbt-0.13.9.tgz
 
 # spark build
-WORKDIR /usr/local/spark-1.5.2
+WORKDIR /usr/local/spark-${SPARK_VERSION}
 # normal
-# RUN build/mvn -Pyarn -Phadoop-2.4 -Dhadoop.version=2.4.0 -DskipTests clean package
+RUN build/mvn -Pyarn -Phadoop-2.4 -Dhadoop.version=2.4.0 -DskipTests clean package
 # jdbc and hive saport
-RUN build/mvn -Pyarn -Phadoop-2.4 -Dhadoop.version=2.4.0 -Phive -Phive-thriftserver -DskipTests clean package
+# RUN build/mvn -Pyarn -Phadoop-2.4 -Dhadoop.version=2.4.0 -Phive -Phive-thriftserver -DskipTests clean package
+
+WORKDIR /root
 
